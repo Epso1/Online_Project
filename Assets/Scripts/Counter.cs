@@ -5,17 +5,17 @@ using TMPro;
 public class Counter : NetworkBehaviour
 {
     int count = 0;
-    [SerializeField] TextMeshProUGUI counterText;
+    [SerializeField] TMP_Text counterText;
 
     [ServerRpc(RequireOwnership = false)]
-    private void IncreaseCounterServerRpc()
+    private void IncreaseCounterServerRpc(ServerRpcParams rpcParams = default)
     {
         count++;
         counterText.text = count.ToString();
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void DecreaseCounterServerRpc()
+    private void DecreaseCounterServerRpc(ServerRpcParams rpcParams = default)
     {
         count--;
         counterText.text = count.ToString();
